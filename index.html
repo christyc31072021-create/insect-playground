@@ -13,13 +13,33 @@
             user-select: none;
         }
 
-      /* 設定背景 */
+      /* 設定背景 - 使用影片 */
 body {
-    background-image: url('forest_bg.jpg');
-    background-size: cover;
-    background-attachment: fixed;
     height: 100vh;
     overflow: hidden;
+    background: #333;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(200,232,181,0.3) 0%, rgba(159,211,163,0.3) 50%, rgba(126,191,122,0.3) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+video.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 /* 蝴蝶的飛舞動畫 */
@@ -53,7 +73,6 @@ body {
     100% { left: 100%; }
 }
             min-height: 100vh;
-            background: linear-gradient(145deg, #c8e8b5 0%, #9fd3a3 50%, #7ebf7a 100%);
             overflow-x: hidden;
             position: relative;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="27" viewBox="0 0 24 27"><polygon points="2,2 22,13 12,16 2,25" fill="%23ffdd77" stroke="%23aa8844" stroke-width="1.5"/><circle cx="7" cy="11" r="2" fill="white"/></svg>') 8 8, auto;
@@ -330,6 +349,10 @@ body {
     </style>
 </head>
 <body>
+
+<video class="bg-video" autoplay muted loop playsinline>
+    <source src="forest_bg.mp4" type="video/mp4">
+</video>
 
 <div class="stage" id="insectStage"></div>
 
